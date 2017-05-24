@@ -1,13 +1,13 @@
-# Express Starter
+# Koa Starter
 
-A simple boilerplate for Express based APIs
+A simple boilerplate for Koa based APIs
 
 ## How to use
 
 Start your project by cloning this repo and removing its git reference.
 
 ```sh
-git clone https://github.com/rochdev/express-starter.git
+git clone https://github.com/8DCloud/koa-starter.git
 rm -rf .git
 ```
 
@@ -15,9 +15,10 @@ Then simply make sure to update the `package.json`, `README.md` and `LICENSE` fi
 
 ## What's included
 
-* Basic API middleware ([cors](https://github.com/expressjs/cors), [body-parser](https://github.com/expressjs/body-parser), [compression](https://github.com/expressjs/compression))
+* Basic API middleware ([cors](https://github.com/koajs/cors), [compression](https://github.com/koajs/compress))
 * Basic error handling middleware
-* Validation using [Celebrate](https://github.com/continuationlabs/celebrate) and [Joi](https://github.com/hapijs/joi)
+* Routing using [Koa Joi Router](https://github.com/koajs/joi-router)
+* Validation using [Joi](https://github.com/hapijs/joi) through [Koa Joi Router](https://github.com/koajs/joi-router)
 * Logging with [bunyan](https://github.com/trentm/node-bunyan)
 * ESLint with [standard](https://github.com/feross/eslint-config-standard) configuration
 * Unit testing using [mocha](https://mochajs.org/), [chai](http://chaijs.com/), [sinon](http://sinonjs.org/), [proxyquire](https://github.com/thlorenz/proxyquire) and [supertest](https://github.com/visionmedia/supertest)
