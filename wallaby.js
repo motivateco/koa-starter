@@ -5,15 +5,15 @@ module.exports = function () {
     ],
 
     tests: [
-      'test/**/*.spec.js'
+      'test/**/*.js'
     ],
 
     env: {
       type: 'node'
     },
 
-    setup: function () {
-      require('./test/setup')
+    setup: function (wallaby) {
+      require(wallaby.localProjectDir + '/test/setup')
     }
   }
 }
