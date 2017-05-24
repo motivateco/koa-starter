@@ -1,6 +1,6 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const bunyanMiddleware = require('bunyan-middleware')
+const koa = require('koa')
+const bodyParser = require('koa-bodyparser')
+const koaBunyanLogger = require('koa-bunyan-logger')
 const compression = require('compression')
 const cors = require('cors')
 const Celebrate = require('celebrate')
@@ -9,17 +9,14 @@ const errorHandler = require('./middleware/error/errorHandler')
 const log = require('./log')
 const routes = require('./routes')
 
-const app = express()
+const app = koa()
 
 app.disable('x-powered-by')
 app.use(compression())
-app.use(bunyanMiddleware({
-  headerName: 'X-Request-ID',
-  logger: log
-}))
+app.use(koaBunyanLogger())
 app.options('*', cors())
 app.use(cors())
-app.use(bodyParser.json())
+app.use(bodyParser())
 app.use(routes)
 app.use(notFoundHandler)
 app.use(Celebrate.errors())
