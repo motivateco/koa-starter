@@ -1,42 +1,43 @@
 {
-  "name": "express-starter",
+  "name": "koa-starter",
   "version": "1.0.0",
-  "description": "A simple boilerplate for Express based APIs",
+  "description": "A simple boilerplate for Koa based APIs",
   "main": "server.js",
   "engines": {
     "node": ">=6.10.0"
   },
   "scripts": {
-    "start": "nodemon server | bunyan",
+    "start": "NODE_PATH=./ nodemon server | bunyan",
     "lint": "eslint .",
-    "test": "eslint . && nyc --reporter=html --reporter=text mocha",
-    "tdd": "mocha --watch",
-    "codecov": "nyc report --reporter=lcov && codecov"
+    "test": "eslint . && NODE_PATH=./ nyc --reporter=html --reporter=text mocha",
+    "tdd": "NODE_PATH=./ mocha --watch",
+    "codecov": "nyc report --reporter=lcov && codecov",
+    "debug": "nodemon --nolazy --debug-brk=5858  server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rochdev/express-starter.git"
+    "url": "git+https://github.com/8DCloud/koa-starter.git"
   },
   "keywords": [
-    "express",
+    "koa",
     "starter"
   ],
-  "author": "Roch Devost",
-  "license": "MIT",
+  "author": "Motivateco",
+  "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/rochdev/express-starter/issues"
+    "url": "https://github.com/8DCloud/koa-starter/issues"
   },
-  "homepage": "https://github.com/rochdev/express-starter#readme",
+  "homepage": "https://github.com/8DCloud/koa-starter#readme",
   "dependencies": {
     "body-parser": "^1.17.0",
     "bunyan": "^1.8.6",
-    "bunyan-middleware": "^0.6.0",
+    "bunyan-logger": "^0.1.1",
     "celebrate": "^4.0.1",
     "compression": "^1.6.2",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
-    "express": "^4.15.0",
-    "http-errors": "^1.6.1"
+    "http-errors": "^1.6.1",
+    "koa": "^2.2.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
