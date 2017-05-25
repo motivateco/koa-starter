@@ -1,5 +1,6 @@
 const createError = require('http-errors')
-const http = require('http')
+const statuses = require('statuses')
+
 describe('middleware/errorHandler', () => {
   let errorHandler
   let ctx
@@ -7,7 +8,9 @@ describe('middleware/errorHandler', () => {
   beforeEach(() => {
     ctx = {
       body: {},
-      message: 'response message',
+      get message () {
+        return statuses(ctx.status)
+      },
       req: {
         status: 'request status'
       }
@@ -27,7 +30,7 @@ describe('middleware/errorHandler', () => {
     const next = sinon.stub().throws(err)
     errorHandler()(ctx, next)
     expect(ctx.body).to.eql({
-      message: http.STATUS_CODES[500]
+      message: statuses(500)
     })
   })
 
@@ -36,7 +39,7 @@ describe('middleware/errorHandler', () => {
     const next = sinon.stub().throws(err)
     errorHandler()(ctx, next)
     expect(ctx.body).to.eql({
-      message: http.STATUS_CODES[500]
+      message: statuses(500)
     })
   })
 
@@ -47,5 +50,4 @@ describe('middleware/errorHandler', () => {
     errorHandler(log)(ctx, next)
     expect(log.error).to.have.been.calledWith({ err, req: ctx.req })
   })
-  
 })
