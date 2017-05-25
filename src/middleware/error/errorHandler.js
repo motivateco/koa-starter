@@ -1,3 +1,4 @@
+const http = require('http')
 const errorHandler = (logger) => {
   if (!logger) {
     logger = {
@@ -14,7 +15,12 @@ const errorHandler = (logger) => {
       if (status >= 500) {
         // internal server errors
         logger.error({ err, req: ctx.req }, err.message)
-        body.message = ctx.message
+        body.message = http.STATUS_CODES[status]
+        /*  
+        http://koajs.com/#response
+        "By default, response.message is associated with response.status."
+         What does this mean?
+        */
       } else {
         // client errors
         Object.assign(body, err)

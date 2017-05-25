@@ -1,17 +1,17 @@
-const createError = require('http-errors')
-
 describe('middleware/notFoundHandler', () => {
   let notFoundHandler
   let next
-
+  let ctx
   beforeEach(() => {
+    ctx = {
+      throw: sinon.stub()
+    }
     next = sinon.stub()
-    notFoundHandler = require('../../../src/middleware/error/notFoundHandler')
+    notFoundHandler = require('src/middleware/error/notFoundHandler')
   })
 
-  it('should return a NotFoundError', () => {
-    notFoundHandler(null, null, next)
-
-    expect(next).to.have.been.calledWith(createError(404))
+  it('should throw a 404', () => {
+    notFoundHandler(ctx, next)
+    expect(ctx.throw).to.have.been.calledWith(404)
   })
 })
