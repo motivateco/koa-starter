@@ -23,7 +23,7 @@
     "starter"
   ],
   "author": "Motivateco",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/8DCloud/koa-starter/issues"
   },
